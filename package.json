@@ -1,0 +1,19 @@
+{
+  "name": "dynamo_lib",
+  "version": "1.0.0",
+  "description": "Adds a custom model format for animating models in Minecraft",
+  "main": "src/plugin.ts",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/plugin.ts --bundle --outfile=dist/dynamo_lib.js",
+    "dev": "esbuild src/plugin.ts --bundle --outfile=dist/dynamo_lib.js --watch"
+  },
+  "author": "ageuxo",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "blockbench-types": "^5.0.6"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

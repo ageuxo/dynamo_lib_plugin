@@ -1,0 +1,15 @@
+{
+	"1.0.0": {
+		"title": "1.0.0",
+		"date": "2026-01-28",
+		"author": "Ageuxo",
+		"categories": [
+			{
+				"title": "Features",
+				"list": [
+					"Initial release!"
+				]
+			}
+		]
+	}
+}

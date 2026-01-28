@@ -1,0 +1,1 @@
+Adds custom animation format for use in Minecraft mods.
