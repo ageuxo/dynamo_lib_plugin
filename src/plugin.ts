@@ -29,13 +29,7 @@ const plugin: PluginOptions = {
 
         MenuBar.addAction(exportAction, 'file.export');
 
-        const callback = Blockbench.on('compile' as EventName, ({model})=> {
-            if (Project.format.id == extendedJava.id) {
-                model.loader = "fancydoors:group";
-            }
-        });
-
-        deletables.push(extendedJava, exportAction, ExtendedCodec, callback);
+        deletables.push(extendedJava, exportAction, ExtendedCodec);
 
     },
     onunload() {
