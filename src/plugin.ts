@@ -2,6 +2,22 @@ import ExtendedCodec from "./extended_codec";
 
 const deletables: Deletable[] = [];
 
+class EventCallback implements Deletable {
+    event: EventName;
+    cb: any;
+
+    constructor(event: EventName, cb: any) {
+        this.event = event;
+        this.cb = cb;
+
+        Blockbench.on(event, cb);
+    }
+
+    delete(): void {
+        Blockbench.removeListener(this.event, this.cb)
+    }
+}
+
 const plugin: PluginOptions = {
     title: 'Dynamo Library',
     author: 'ageuxo',
