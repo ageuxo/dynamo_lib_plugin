@@ -86,7 +86,8 @@ function createExtendedModelFormat(extendedCodec: Codec): ModelFormat {
         texture_folder: true,
         pbr: true,
         animation_mode: true,
-        animation_files: true
+        animation_files: true,
+        bone_rig: true
         });
 
     extendedFormat.codec = extendedCodec;
