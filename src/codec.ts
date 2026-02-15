@@ -14,10 +14,9 @@ export default function createExtendedCodec() {
     },
     compile: (options) => {
       if (options === undefined) options = {}
-      var exportRaw: boolean = options.raw;
-      var model = java_block.compile(options)
+      var model = java_block.compile({ raw: true })
       model.loader = "fancydoors:group";
-      if (exportRaw) {
+      if (options.raw) {
         return model;
       } else {
         return autoStringify(model)
