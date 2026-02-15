@@ -28,8 +28,6 @@ const plugin: PluginOptions = {
     min_version: '5.0.0',
     has_changelog: true,
     onload() {
-
-        console.log("Dynamo Library loaded");
         var extendedCodec = createExtendedCodec();
         var extendedFormat = createExtendedModelFormat(extendedCodec);
         extendedCodec.format = extendedFormat;
