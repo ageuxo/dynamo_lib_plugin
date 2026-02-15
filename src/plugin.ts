@@ -24,6 +24,7 @@ const plugin: PluginOptions = {
     icon: 'icon.png',
     version: '1.0.0',
     description: 'Adds a custom model format for animating models in Minecraft',
+    tags: ['Minecraft: Java Edition', 'Animation'],
     variant: 'both',
     min_version: '5.0.0',
     has_changelog: true,
