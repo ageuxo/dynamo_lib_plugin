@@ -1,5 +1,4 @@
 import createExtendedCodec from "./codec";
-import ExtendedCodec from "./codec";
 
 const deletables: Deletable[] = [];
 
