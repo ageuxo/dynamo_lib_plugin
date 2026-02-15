@@ -11,8 +11,17 @@ const plugin: PluginOptions = {
     min_version: '5.0.0',
     has_changelog: false,
     onload() {
+
+        const format = new ModelFormat("test_format", {
+            name: "Test Format",
+            animation_mode: true,
+        })
+
+        const codec = new Codec("test_codec", {
+            name: "Test Codec"
+        })
         
-        deletables.push();
+        deletables.push(format);
 
     },
     onunload() {
@@ -24,7 +33,7 @@ const plugin: PluginOptions = {
     }
 }
 
-BBPlugin.register('animation_test', plugin)
+BBPlugin.register('dynamo_lib', plugin)
 
 
 
