@@ -1,4 +1,5 @@
-import ExtendedCodec from "./extended_codec";
+import createExtendedCodec from "./codec";
+import ExtendedCodec from "./codec";
 
 const deletables: Deletable[] = [];
 
@@ -30,22 +31,24 @@ const plugin: PluginOptions = {
     onload() {
 
         console.log("Dynamo Library loaded");
-        var extendedJava = createExtendedModelFormat();
+        var extendedCodec = createExtendedCodec();
+        var extendedFormat = createExtendedModelFormat(extendedCodec);
+        extendedCodec.format = extendedFormat;
 
         const exportAction = new Action('export_dynamo_model', {
             name: 'Export Dynamo Model',
             icon: 'icon.png',
             category: 'file',
-            condition: () => Project.format.id == extendedJava.id,
+            condition: () => Project.format.id == extendedFormat.id,
             click: () => {
-                ExtendedCodec.export();
+                extendedCodec.export();
             }
         });
-        ExtendedCodec.export_action = exportAction;
+        extendedCodec.export_action = exportAction;
 
         MenuBar.addAction(exportAction, 'file.export');
 
-        deletables.push(extendedJava, exportAction, ExtendedCodec);
+        deletables.push(extendedFormat, extendedCodec, exportAction);
 
     },
     onunload() {
@@ -59,7 +62,7 @@ const plugin: PluginOptions = {
 
 BBPlugin.register('dynamo_lib', plugin)
 
-function createExtendedModelFormat(): ModelFormat {
+function createExtendedModelFormat(extendedCodec: Codec): ModelFormat {
     const extendedFormat = new ModelFormat('dynamo_extended', {
         id: 'dynamo_extended',
         name: 'Extended DynamoLib model',
@@ -84,10 +87,12 @@ function createExtendedModelFormat(): ModelFormat {
         display_mode: true,
         texture_folder: true,
         pbr: true,
-        codec: ExtendedCodec,
         animation_mode: true,
-        animation_files: true
+        animation_files: true,
+        animation_grouping: "disabled"
     });
+
+    extendedFormat.codec = extendedCodec;
 
     return extendedFormat;
 }
